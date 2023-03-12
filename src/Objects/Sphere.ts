@@ -1,11 +1,12 @@
 import { Vector3 } from "../Math/Vector3";
+import { Hittable } from "./HittableList";
 import { Ray } from "./Ray";
 import { Material, Record } from "./Record";
 
-export class Sphere {
+export class Sphere implements Hittable {
     private center: Vector3;
     private radius: number;
-    private mat: Material;
+    mat: Material;
 
     constructor(center: Vector3, radius: number, material: Material) {
         this.center = center;

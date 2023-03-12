@@ -81,7 +81,7 @@ export class Vector3 {
 		}
 	}
 
-	constructor(x?: number, y?: number z?: number) {
+	constructor(x?: number, y?: number, z?: number) {
 		this.components = new Float64Array(3);
 		this.components[0] = x ? x : 0;
 		this.components[1] = y ? y : 0;

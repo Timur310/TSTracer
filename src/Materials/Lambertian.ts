@@ -1,7 +1,7 @@
 import { Vector3 } from "../Math/Vector3";
 import { Ray } from "../Objects/Ray";
-import { Record } from "../Objects/Record";
-import { Material, Texture } from "./SolidColor";
+import { Material, Record } from "../Objects/Record";
+import { Texture } from "./SolidColor";
 
 export class Lambertian implements Material {
     albedo: Texture;
@@ -9,7 +9,7 @@ export class Lambertian implements Material {
         this.albedo = albedo;
     }
 
-    public emitted(): Vector3 {
+    public emitted(record: Record): Vector3 {
         return new Vector3(0, 0, 0);
     }
 

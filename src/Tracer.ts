@@ -1,4 +1,5 @@
-import { writeFileSync } from 'fs'
+import { writeFileSync } from 'fs';
+import { DiffuseLight } from './Materials/DiffuseLight';
 import { Lambertian } from './Materials/Lambertian';
 import { SolidColor } from './Materials/SolidColor';
 import { clamp } from './Math/Common';
@@ -8,6 +9,9 @@ import { HittableList } from './Objects/HittableList';
 import { Ray } from './Objects/Ray';
 import { Record } from './Objects/Record';
 import { Sphere } from './Objects/Sphere';
+import { xy_rect } from './Objects/xy_rect';
+import { xz_rect } from './Objects/xz_rect';
+import { yz_rect } from './Objects/yz_rect';
 
 export class Tracer {
 
@@ -27,9 +31,9 @@ export class Tracer {
 			return new Vector3(0, 0, 0);
 		}
 
-		const emitted = record.material.emitted();
+		const emitted = record.material.emitted(record);
 
-		if (!record.material.scatter(r)) return emitted;
+		if (!record.material.scatter(record)) return emitted;
 		const currColor = Vector3.multiplyVector(record.attenuation, this.rayColor(record.scattered, scene, depth - 1, record));
 		currColor.addVector(emitted)
 		return currColor;
@@ -49,23 +53,34 @@ export class Tracer {
 		return `${255 * clamp(r, 0.0, 0.999)} ${255 * clamp(g, 0.0, 0.999)} ${255 * clamp(b, 0.0, 0.999)} \n`;
 	}
 
+	private setupScene(scene: HittableList): void {
+		scene.add(new yz_rect(0,555,0,555,555,new Lambertian(new SolidColor(new Vector3(.12, .45, .15)))));
+		scene.add(new yz_rect(0,555,0,555,0,new Lambertian(new SolidColor(new Vector3(.65, .05, .05)))));
+		scene.add(new xz_rect(0,555,0,555,0,new Lambertian(new SolidColor(new Vector3(.73, .73, .73)))));
+		scene.add(new xz_rect(0,555,0,555,555,new Lambertian(new SolidColor(new Vector3(.73, .73, .73)))));
+		scene.add(new xy_rect(0,555,0,555,555,new Lambertian(new SolidColor(new Vector3(.73, .73, .73)))));
+		scene.add(new xz_rect(213,343,227,332,554,new DiffuseLight(new Vector3(15, 15, 15)))); // light
+	}
+
 	public async renderImage(): Promise<void> {
 		const max_depth = 10;
-		const max_samples = 1;
+		const max_samples = 50;
 
 		// Camera
-		const lookfrom = new Vector3(-0.25, 1, 0.5);
-		const lookat = new Vector3(0, 0, -1);
+		const lookfrom = new Vector3(278, 278, -800);
+		const lookat = new Vector3(278, 278, 0);
 		const vUp = new Vector3(0, 1, 0);
 		const dist_to_focus = 1.5;
-		const aperture = 0.1;
+		const aperture = 0.001;
 
 		const camera = new Camera(lookfrom, lookat, vUp, aperture, dist_to_focus, 40, this.aspectRatio);
 		const scene = new HittableList();
-		scene.add(new Sphere(new Vector3(0, 0, -2), 1.0, new Lambertian(new SolidColor(.5,.5,0))))
+
+		this.setupScene(scene)
+
 		const record = new Record();
 
-		let img = `P3\n${this.width} ${this.height} n\255\n`;
+		let img = `P3\n${this.width} ${this.height} \n255\n`;
 
 		for (let j = this.height - 1; j >= 0; --j) {
 			console.log(j);

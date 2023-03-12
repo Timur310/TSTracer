@@ -1,14 +1,7 @@
-import { Ray } from "../../Ray";
 import { Vector3 } from "../Math/Vector3";
-import { Record } from "../Objects/Record";
 
 export type Texture = {
     value(u: number, v: number, p: Vector3): Vector3;
-}
-
-export type Material = {
-	scatter(record: Record): boolean;
-	emitted(): Vector3;
 }
 
 export class SolidColor implements Texture {

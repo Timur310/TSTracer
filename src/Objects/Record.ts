@@ -2,18 +2,12 @@ import { Vector3 } from "../Math/Vector3";
 import { Ray } from "./Ray";
 
 export type Material = {
-    scatter(r: Ray): boolean;
-	emitted(): Vector3;
+    scatter(record: Record): boolean;
+	emitted(record: Record): Vector3;
 }
 
 export type Texture = {
 	value(u: number, v: number, p: Vector3): Vector3;
-}
-
-export type Hittable = {
-	mat: Material;
-	hit(r: Ray, t_min: number, t_max: number): boolean;
-	bounding_box(): boolean;
 }
 
 export class Record {

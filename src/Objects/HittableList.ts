@@ -1,9 +1,9 @@
 import { Ray } from "./Ray";
 import { Material, Record } from "./Record";
 
-export interface Hittable {
+export type Hittable = {
 	mat: Material;
-	hit(r: Ray, t_min: number, t_max: number): boolean;
+	hit(r: Ray, t_min: number, t_max: number, record: Record): boolean;
 }
 
 export class HittableList {
@@ -29,7 +29,7 @@ export class HittableList {
 		let closest_so_far = t_max;
 
 		for (const obj of this.getList) {
-			if (obj.hit(r, t_min, closest_so_far)) {
+			if (obj.hit(r, t_min, closest_so_far, record)) {
 				hit_anything = true;
 				closest_so_far = record.t;
 			}

@@ -4,3 +4,5 @@ function start() {
     const tracer = new Tracer(256,256,1)
     tracer.renderImage();
 }
+
+start()
