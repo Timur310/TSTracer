@@ -3,6 +3,6 @@
     "esbuild": "^0.17.11"
   },
   "scripts": {
-    "build": "esbuild src/test.ts --outfile=src/test_out.js --bundle --platform=node"
+    "build": "esbuild test.ts --outfile=test_out.js --bundle --minify --platform=node"
   }
 }

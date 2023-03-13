@@ -1,4 +1,5 @@
 import { Vector3 } from "../Math/Vector3";
+import { Ray } from "../Objects/Ray";
 import { Material, Record } from "../Objects/Record";
 import { SolidColor } from "./SolidColor";
 
@@ -8,7 +9,7 @@ export class DiffuseLight implements Material {
 		this.emit = new SolidColor(color);
 	}
 
-	scatter(record: Record): boolean {
+	scatter(ray: Ray, record: Record): boolean {
 		return false;
 	}
 
@@ -17,6 +18,7 @@ export class DiffuseLight implements Material {
 			record.u,
 			record.v,
 			record.p,
+			record
 		);
 	}
 }

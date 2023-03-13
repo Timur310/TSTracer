@@ -2,12 +2,9 @@ import { Vector3 } from "../Math/Vector3";
 import { Ray } from "./Ray";
 
 export type Material = {
-    scatter(record: Record): boolean;
+    scatter(ray: Ray, record: Record, alb: Vector3, scattered: Ray, pdf: number): boolean;
 	emitted(record: Record): Vector3;
-}
-
-export type Texture = {
-	value(u: number, v: number, p: Vector3): Vector3;
+	scatteringPdf(record: Record, ray: Ray, ray_scattered: Ray): number;
 }
 
 export class Record {

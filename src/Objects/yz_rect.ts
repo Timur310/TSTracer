@@ -11,7 +11,7 @@ export class yz_rect implements Hittable {
 	private y1: number;
 	private k: number;
 
-	constructor(z0: number, z1: number, y0: number, y1: number, k: number, mat: Material,) {
+	constructor(z0: number, z1: number, y0: number, y1: number, k: number, mat: Material) {
 		this.mat = mat;
 		this.k = k;
 		this.z0 = z0;
@@ -26,7 +26,7 @@ export class yz_rect implements Hittable {
 			return false;
 		}
 		const y = r.Origin.at(1) + t * r.Direction.at(1);
-		const z = r.Direction.at(2) + t * r.Direction.at(2);
+		const z = r.Origin.at(2) + t * r.Direction.at(2);
 		if (y < this.z0 || y > this.z1 || z < this.y0 || z > this.y1) {
 			return false;
 		}

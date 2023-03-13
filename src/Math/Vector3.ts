@@ -11,6 +11,23 @@ export class Vector3 {
 		return out;
 	}
 
+	public static Reflect(v: Vector3, n: Vector3): Vector3 {
+		const d = Vector3.multiplyScalar(n, Vector3.dot(v, n) * 2);
+		return Vector3.subVector(v, d);
+	}
+
+	public static Refract(uv: Vector3,n: Vector3, etai_over_etat: number): Vector3 {
+		const cos_theta = Math.min(Vector3.dot(Vector3.multiplyScalar(uv, -1), n), 1.0);
+	
+		const v = Vector3.addVector(uv, Vector3.multiplyScalar(n, cos_theta));
+		const r_out_perp = Vector3.multiplyScalar(v, etai_over_etat);
+	
+		const p = -Math.sqrt(Math.abs(1.0 - r_out_perp.length()));
+		const r_out_parallel = Vector3.multiplyScalar(n, p);
+	
+		return Vector3.addVector(r_out_perp, r_out_parallel);
+	}
+
 	public static copyVector(v: Vector3): Vector3 {
 		return new Vector3(v.at(0), v.at(1), v.at(2));
 	}

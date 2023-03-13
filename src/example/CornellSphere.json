@@ -1,0 +1,203 @@
+{
+    "settings": {
+        "max_samples": 300,
+        "max_depth": 10,
+        "width": 256,
+        "height": 256,
+        "aspectRatio": 1
+    },
+    "camera": {
+        "lookFrom": {
+            "x": 278,
+            "y": 278,
+            "z": -800
+        },
+        "lookAt": {
+            "x": 278,
+            "y": 278,
+            "z": 0
+        },
+        "vUp": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+        },
+        "focusDistance": 1.5,
+        "aperture": 0.0,
+        "fov": 40
+    },
+    "scene": {
+        "sphere_1": {
+            "type": "Sphere",
+            "position": {
+                "x": 80,
+                "y": 125,
+                "z": 355
+            },
+            "radius": 75,
+            "material": {
+                "type": "lambertian",
+                "texture": {
+                    "color": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    }
+                }
+            }
+        },
+        "sphere_2": {
+            "type": "Sphere",
+            "position": {
+                "x": 400,
+                "y": 120,
+                "z": 300
+            },
+            "radius": 125,
+            "material": {
+                "type": "metal",
+                "texture": {
+                    "color": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    },
+                    "fuzzines": 0.3
+                }
+            }
+        },
+        "sphere_3": {
+            "type": "Sphere",
+            "position": {
+                "x": 80,
+                "y": 300,
+                "z": 455
+            },
+            "radius": 75,
+            "material": {
+                "type": "dielectric",
+                "value": 0.3
+            }
+        },
+        "plane_1": {
+            "type": "yz_rect",
+            "position": {
+                "z0": 0,
+                "z1": 555,
+                "y0": 0,
+                "y1": 555,
+                "k": 555
+            },
+            "material": {
+                "type": "lambertian",
+                "texture": {
+                    "color": {
+                        "x": 0.12,
+                        "y": 0.45,
+                        "z": 0.15
+                    }
+                }
+            }
+        },
+        "plane_2": {
+            "type": "yz_rect",
+            "position": {
+                "z0": 0,
+                "z1": 555,
+                "y0": 0,
+                "y1": 555,
+                "k": 0
+            },
+            "material": {
+                "type": "lambertian",
+                "texture": {
+                    "color": {
+                        "x": 0.65,
+                        "y": 0.05,
+                        "z": 0.05
+                    }
+                }
+            }
+        },
+        "plane_3": {
+            "type": "xz_rect",
+            "position": {
+                "z0": 0,
+                "z1": 555,
+                "y0": 0,
+                "y1": 555,
+                "k": 0
+            },
+            "material": {
+                "type": "lambertian",
+                "texture": {
+                    "color": {
+                        "x": 0.73,
+                        "y": 0.73,
+                        "z": 0.73
+                    }
+                }
+            }
+        },
+        "plane_4": {
+            "type": "xz_rect",
+            "position": {
+                "z0": 0,
+                "z1": 555,
+                "y0": 0,
+                "y1": 555,
+                "k": 555
+            },
+            "material": {
+                "type": "lambertian",
+                "texture": {
+                    "color": {
+                        "x": 0.73,
+                        "y": 0.73,
+                        "z": 0.73
+                    }
+                }
+            }
+        },
+        "plane_5": {
+            "type": "xy_rect",
+            "position": {
+                "z0": 0,
+                "z1": 555,
+                "y0": 0,
+                "y1": 555,
+                "k": 555
+            },
+            "material": {
+                "type": "lambertian",
+                "texture": {
+                    "color": {
+                        "x": 0.73,
+                        "y": 0.73,
+                        "z": 0.73
+                    }
+                }
+            }
+        },
+        "rect_light": {
+            "type": "xz_rect",
+            "position": {
+                "z0": 213,
+                "z1": 343,
+                "y0": 227,
+                "y1": 332,
+                "k": 554
+            },
+            "material": {
+                "type": "diffuseLight",
+                "texture": {
+                    "color": {
+                        "x": 15,
+                        "y": 15,
+                        "z": 15
+                    }
+                }
+            }
+        }
+    }
+}
