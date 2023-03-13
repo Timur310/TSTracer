@@ -2,8 +2,8 @@
     "settings": {
         "max_samples": 300,
         "max_depth": 10,
-        "width": 256,
-        "height": 256,
+        "width": 512,
+        "height": 512,
         "aspectRatio": 1
     },
     "camera": {
