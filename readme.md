@@ -15,7 +15,7 @@ A refactored version of my first ever atempt at building a raytracer in JS, most
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/Timur310/TSTracer.git
 ```
 
 Go to the project directory
@@ -40,7 +40,7 @@ This will render the example cornellSphere scene from the example folder, the sc
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/Timur310/TSTracer/blob/main/src/example/image.png)
 
 
 ## Acknowledgements
