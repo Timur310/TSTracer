@@ -3,6 +3,6 @@
     "esbuild": "^0.17.11"
   },
   "scripts": {
-    "build": "esbuild test.ts --outfile=test_out.js --bundle --minify --platform=node"
+    "build": "esbuild src/example/cornellSphere.ts --outfile=example.js --bundle --minify --platform=node"
   }
 }
